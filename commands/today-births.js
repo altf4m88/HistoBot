@@ -32,7 +32,7 @@ module.exports = {
                         pages.push(tempBeds);
                         //reinitialize the embed
                         tempBeds = new Discord.MessageEmbed()
-                        setEmbedsMisc(tempBeds);
+                        setEmbedsMisc(tempBeds, eventDate);
                         
 
                         limit += 10;
