@@ -13,7 +13,7 @@ module.exports = {
         const setEmbedsMisc = (embed, date) => {
             embed
             .setTitle(`Historical Figure Born On ${date}`)
-            .setColor('#FFF')
+            .setColor('CYAN')
             .setDescription(`\`Some Were Destined To Change The World, Brought To You By HistoBot ('-')7\``)
         }
 
