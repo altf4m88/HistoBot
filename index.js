@@ -59,12 +59,6 @@ client.on("message", (message) => {
         case("announce"):
             client.commands.get('announce').execute(client, message, args);
             break;
-        case("t"):
-            client.commands.get('test-embed').execute(message);
-            break;
-        case("tt"):
-            client.commands.get('test-embedd').execute(message);
-            break;
         case("medal"):
             client.commands.get('medal').execute(message, args)
     }    
