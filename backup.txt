@@ -1,0 +1,8 @@
+const embed = new Discord.MessageEmbed()
+        .setTitle('TODAY EVENTS IN HISTORY')
+        .setFooter(`Brought To You By HistoBot ('-')7`)
+        .setColor('#FFF')
+
+        eventData.forEach( event => {
+            embed.addField(`${eventDate} ${event.year}`,`${event.text}`,false)
+        })

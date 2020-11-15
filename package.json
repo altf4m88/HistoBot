@@ -1,0 +1,17 @@
+{
+  "name": "histobot",
+  "version": "1.0.0",
+  "description": "\"this is a discord history-themed bot\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "die-botten-hoch"
+  },
+  "author": "altf4m88",
+  "license": "ISC",
+  "dependencies": {
+    "discord-paginationembed": "^2.1.0",
+    "discord.js": "^12.4.1",
+    "discord.js-pagination": "^1.0.3",
+    "node-fetch": "^2.6.1"
+  }
+}
