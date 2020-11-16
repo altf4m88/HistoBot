@@ -65,10 +65,16 @@ client.on("message", (message) => {
             client.commands.get('announce').execute(client, message, args);
             break;
         case("medal"):
-            client.commands.get('medal').execute(client, message, args)
+            client.commands.get('medal').execute(client, message, args);
             break;
         case("help"):
-            client.commands.get('help').execute(message)
+            client.commands.get('help').execute(message);
+            break;
+        case("say"):
+            client.commands.get('say').execute(message, args);
+            break;
+        case("shout"):
+            client.commands.get('shout').execute(message, args);
             break;
     }    
     
