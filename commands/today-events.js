@@ -6,7 +6,7 @@ const today = new Date;
 
 module.exports = {
     name: 'today-events',
-    description: 'Give information on today historical event',
+    description: 'List of historical figure born today',
     execute(message){
         const pages = [];
         let fieldsArr = [];
@@ -62,7 +62,10 @@ module.exports = {
             const timeout = '300000';
             pagination(message, pages, emojiList, timeout)
         })
-        .catch(e => console.log(e));
+        .catch(e => {
+            console.log(e)
+            message.channel.send("No data found, please check your date and months");
+        });
 
 
     }

@@ -14,7 +14,7 @@ module.exports = {
             embed
             .setTitle(`Historical Figure Born On ${date}`)
             .setColor('CYAN')
-            .setDescription(`\`Some Were Destined To Change The World, Brought To You By HistoBot ('-')7\``)
+            .setDescription(`Some Were Destined To Change The World, Brought To You By HistoBot ('-')7`)
         }
 
         const setField = (eventData, eventDate) => {
@@ -61,7 +61,9 @@ module.exports = {
             const timeout = '360000';
             pagination(message, pages, emojiList, timeout)
         })
-        .catch(e => console.log(e));
-
+        .catch(e => {
+            console.log(e)
+            message.channel.send("No data found, please check your date and months");
+        });
     }
 }

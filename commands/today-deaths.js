@@ -5,7 +5,7 @@ const APIURL = require("../config.json").BASEURL;
 
 module.exports = {
     name: 'today-deaths',
-    description: 'Give information on historical figure deaths',
+    description: 'List of historical figure died today',
     execute(message){
         const pages = [];
         let fieldsArr = [];
@@ -60,7 +60,10 @@ module.exports = {
             const timeout = '600000';
             pagination(message, pages, emojiList, timeout)
         })
-        .catch(e => console.log(e));
+        .catch(e => {
+            console.log(e)
+            message.channel.send("No data found, please check your date and months");
+        });
 
     }
 }
