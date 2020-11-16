@@ -22,7 +22,7 @@ client.once("ready", () => {
     console.log("Jawohl herr Hauptsturmfuhrer!")
     client.user.setPresence({
         activity: {
-            name: "Use |help for help Comrade!"
+            name: "|help for help Comrade!"
         }
     })
 })
@@ -54,6 +54,15 @@ client.on("message", (message) => {
             break;
         case("today-deaths"):
             client.commands.get('today-deaths').execute(message);
+            break;
+        case("search-events"):
+            client.commands.get('search-events').execute(message, args);
+            break;
+        case("search-births"):
+            client.commands.get('search-births').execute(message, args);
+            break;
+        case("search-deaths"):
+            client.commands.get('search-deaths').execute(message, args);
             break;
         case("good-comrade"):
             client.commands.get('good-comrade').execute(message, args);
