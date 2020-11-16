@@ -19,7 +19,12 @@ for(const file of commandFiles){
 
 
 client.once("ready", () => {
-    console.log("Are you my master?");
+    console.log("Jawohl herr Hauptsturmfuhrer!")
+    client.user.setPresence({
+        activity: {
+            name: "Use |help for help Comrade!"
+        }
+    })
 })
 
 
@@ -60,7 +65,11 @@ client.on("message", (message) => {
             client.commands.get('announce').execute(client, message, args);
             break;
         case("medal"):
-            client.commands.get('medal').execute(message, args)
+            client.commands.get('medal').execute(client, message, args)
+            break;
+        case("help"):
+            client.commands.get('help').execute(message)
+            break;
     }    
     
 })
