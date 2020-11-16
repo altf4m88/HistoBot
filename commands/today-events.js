@@ -15,10 +15,10 @@ module.exports = {
             embed
             .setTitle(`Today Events In History`)
             .setColor('RED')
-            .setDescription(`\`Some Were Destined To Change The World, Brought To You By HistoBot ('-')7\``)
+            .setDescription(`Events That Shaped The World Today, Brought To You By HistoBot ('-')7`)
         }
 
-        const setField = (eventData) => {
+        const setField = (eventData, eventDate) => {
                 let limit = 10;
                 let tempBeds = new Discord.MessageEmbed();
                 setEmbedsMisc(tempBeds);
@@ -59,7 +59,7 @@ module.exports = {
             }
             
             const emojiList = ["⏪", "⏩"];
-            const timeout = '120000';
+            const timeout = '300000';
             pagination(message, pages, emojiList, timeout)
         })
         .catch(e => console.log(e));
