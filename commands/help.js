@@ -25,10 +25,16 @@ module.exports = {
             let commandName = args[0];
             const command = require(`./${commandName}.js`);
 
+            embed.setColor('RANDOM')
+	        .setTitle(':book: HISTOBOT |HELP')
+	        .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
+            .setDescription(`${command.description}`)
+            .addField('Usage', `${command.usage}`, true)
+            .addField('Example', `${command.example}`, true)
+            .setFooter('Brought To You By HistoBot');
             console.log(command);
         }
         
-
 
         message.channel.send(embed);
     }
