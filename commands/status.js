@@ -1,6 +1,8 @@
 module.exports = {
     name: 'status',
-    description: 'update the bot status',
+    description: 'Update the bot status',
+    usage: '|status <status-text>',
+    example: '|status reclaiming the holy land',
     execute(client, message, args){
         if(message.author.id !== "439976892343517184") return message.channel.send("Nope, you're not my master");
 

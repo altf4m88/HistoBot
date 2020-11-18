@@ -5,7 +5,9 @@ const APIURL = require("../config.json").BASEURL;
 
 module.exports = {
     name: 'today-births',
-    description: 'Give information on historical figure births',
+    description: 'List of historical figure born today',
+    usage: '|today-births',
+    example: '|today-births',
     execute(message){
         const pages = [];
         let fieldsArr = [];

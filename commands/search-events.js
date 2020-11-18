@@ -6,6 +6,8 @@ const APIURL = require("../config.json").BASEURL;
 module.exports = {
     name: 'search-events',
     description: 'Give information of historical event on searched date',
+    usage:'|search-events <date> <month>',
+    example: '|search-events 22 3',
     execute(message, args){
         console.log(args)
         const pages = [];

@@ -3,6 +3,8 @@ const Discord = require("../node_modules/discord.js");
 module.exports = {
     name: 'medal',
     description: 'give medal to someone',
+    usage:'|medal <name / mention / me> <medal-type (iron-cross, red-star, victoria-cross, medal-of-honor)>',
+    example: '|medal @comrade-igor red-star',
     execute(client, message, args){
         let guild = client.guilds.cache.get(message.guild.id);
         let member = guild.member(message.mentions.users.first());

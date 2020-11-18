@@ -6,6 +6,8 @@ const APIURL = require("../config.json").BASEURL;
 module.exports = {
     name: 'search-births',
     description: 'List of historical figure born on searched date',
+    usage:'|search-births <date> <months>',
+    example: '|search-births 3 1',
     execute(message, args){
         const pages = [];
         let fieldsArr = [];

@@ -6,7 +6,9 @@ const today = new Date;
 
 module.exports = {
     name: 'today-events',
-    description: 'List of historical figure born today',
+    description: 'List of historical events today',
+    usage: '|today-events',
+    example: '|today-events',
     execute(message){
         const pages = [];
         let fieldsArr = [];

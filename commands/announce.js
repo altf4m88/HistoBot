@@ -3,6 +3,8 @@ const Discord = require("../node_modules/discord.js");
 module.exports = {
     name: 'announce',
     description: 'announcement',
+    usage:'|announce <text-to-announce>',
+    example: '|announce 2020 2 is confirmed',
     execute(message){
         if(message.author.id !== "439976892343517184") return message.channel.send("Nope, you're not my master");
 
