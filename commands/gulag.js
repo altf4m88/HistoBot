@@ -3,6 +3,8 @@ const Discord = require("discord.js");
 module.exports = {
     name: 'gulag',
     description: 'GULAGED',
+    usage:'|gulag <mention>',
+    example: '|gulag @comrade-ivan',
     execute(message, args){
         if(message.author.id !== "439976892343517184") return message.channel.send("Nope, you're not my master");
         let user = message.mentions.users.first() || message.author;
