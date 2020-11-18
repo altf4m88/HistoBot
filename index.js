@@ -68,7 +68,7 @@ client.on("message", (message) => {
             client.commands.get('good-comrade').execute(message, args);
             break;
         case("gulag"):
-            client.commands.get('go-to-gulag').execute(message, args);
+            client.commands.get('gulag').execute(message, args);
             break;
         case("announce"):
             client.commands.get('announce').execute(client, message, args);
@@ -77,7 +77,7 @@ client.on("message", (message) => {
             client.commands.get('medal').execute(client, message, args);
             break;
         case("help"):
-            client.commands.get('help').execute(message);
+            client.commands.get('help').execute(message, args);
             break;
         case("say"):
             client.commands.get('say').execute(message, args);
