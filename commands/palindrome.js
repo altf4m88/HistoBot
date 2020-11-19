@@ -13,12 +13,10 @@ module.exports = {
         .setTitle('Palindrome Check');
 
         const palindrome = (str) => {
-            //filter the string
             let filteringRegex = /[a-z0-9]/gi;
             let filteredStr = str.toLowerCase().match(filteringRegex);
             let result;
 
-            //this function will be used to create a string from array
             const wordLoop = (array) => {
               let emptyString = "";
               for(let x = 0; x < array.length; x++){
@@ -27,11 +25,8 @@ module.exports = {
               return emptyString;
             }
           
-            //set the normal word
             let string1 = wordLoop(filteredStr);
-            //set up the reversed word to be compared with string 1
             let string2 = wordLoop(filteredStr.reverse());
-            //test the strings, return true or false
             result = string1 === string2 ? 'TRUE' : 'FALSE'; 
 
             embed
@@ -40,9 +35,7 @@ module.exports = {
             .addField('Result', `${result}`, false);
           
             return message.channel.send(embed);
-            
           }
-
         palindrome(args.join(" "))
     }
 }
