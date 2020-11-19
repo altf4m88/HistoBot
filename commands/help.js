@@ -7,9 +7,8 @@ module.exports = {
     example: '|help search-events',
     execute(message, args){
         const embed = new Discord.MessageEmbed()
-        console.log(args);
 
-        if(args == []){
+        if(args[0] == undefined){
             embed.setColor('RANDOM')
 	        .setTitle(':book: HISTOBOT |HELP')
 	        .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
@@ -17,11 +16,12 @@ module.exports = {
 	        .setThumbnail('https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
             .addField('History Knowledge', '`today-events`, `today-births`, `today-deaths`, `search-events`, `search-births`, `search-deaths`,', false)
             .addField('Fun', '`gulag`, `medal`, `say`, `shout`', false)
+            .addField('Misc', '`palindrome`', false)
             .addField('Utility', '`ping`', false)
             .addField('Developer Only', '`introduce`, `status`, \n Commands that were still in testing: `announce`, `good-comrade`', false)
             .setTimestamp()
             .setFooter('Brought To You By HistoBot');
-        }else{
+        }else if(args.length > 0){
             let commandName = args[0];
             const command = require(`./${commandName}.js`);
 
@@ -33,6 +33,8 @@ module.exports = {
             .addField('Example', `${command.example}`, true)
             .setFooter('Brought To You By HistoBot');
             console.log(command);
+        } else{
+            message.channel.send("I can't find the command")
         }
         
 
