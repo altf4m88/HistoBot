@@ -13,7 +13,7 @@ module.exports = {
         const pages = [];
         let fieldsArr = [];
 
-        const setEmbedsMisc = (embed) => {
+        const setEmbedsMisc = (embed, eventDate) => {
             embed
             .setTitle(`Today Events In History`)
             .setColor('RED')
@@ -23,7 +23,7 @@ module.exports = {
         const setField = (eventData, eventDate) => {
                 let limit = 10;
                 let tempBeds = new Discord.MessageEmbed();
-                setEmbedsMisc(tempBeds);
+                setEmbedsMisc(tempBeds, eventDate);
 
 
                 for(let x = 0; x < eventData.length; x++){
