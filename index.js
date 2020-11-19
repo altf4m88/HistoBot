@@ -85,6 +85,9 @@ client.on("message", (message) => {
         case("shout"):
             client.commands.get('shout').execute(message, args);
             break;
+        case("palindrome"):
+            client.commands.get('palindrome').execute(message, args);
+            break;
     }    
     
 })
