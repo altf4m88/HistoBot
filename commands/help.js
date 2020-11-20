@@ -16,9 +16,9 @@ module.exports = {
 	        .setThumbnail('https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
             .addField('History Knowledge', '`today-events`, `today-births`, `today-deaths`, `search-events`, `search-births`, `search-deaths`,', false)
             .addField('Fun', '`gulag`, `medal`, `say`, `shout`', false)
-            .addField('Misc', '`palindrome`', false)
+            .addField('Misc', '`palindrome`, `romanum`', false)
             .addField('Utility', '`ping`', false)
-            .addField('Developer Only', '`introduce`, `status`, \n Commands that were still in testing: `announce`, `good-comrade`', false)
+            .addField('Developer Only', '`introduce`, `status`, \n Commands that were still in testing: `announce`', false)
             .setTimestamp()
             .setFooter('Brought To You By HistoBot');
         }else if(args.length > 0){
