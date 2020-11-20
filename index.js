@@ -88,6 +88,9 @@ client.on("message", (message) => {
         case("palindrome"):
             client.commands.get('palindrome').execute(message, args);
             break;
+        case("romanum"):
+            client.commands.get('romanum').execute(message, args);
+            break;
     }    
     
 })
