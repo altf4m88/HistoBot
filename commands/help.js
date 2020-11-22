@@ -1,11 +1,9 @@
-const Discord = require("../node_modules/discord.js");
-
 module.exports = {
     name: 'help',
     description: 'display command list / command info',
     usage:'|help <command-name>',
     example: '|help search-events',
-    execute(message, args){
+    execute(Discord, message, args){
         const embed = new Discord.MessageEmbed()
 
         if(args[0] == undefined){
@@ -16,9 +14,9 @@ module.exports = {
 	        .setThumbnail('https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
             .addField('History Knowledge', '`today-events`, `today-births`, `today-deaths`, `search-events`, `search-births`, `search-deaths`,', false)
             .addField('Fun', '`gulag`, `medal`, `say`, `shout`', false)
-            .addField('Misc', '`palindrome`, `romanum`', false)
+            .addField('Misc', '`palindrome`, `romanum`, `caesar-ciphers`, `announce`', false)
             .addField('Utility', '`ping`', false)
-            .addField('Developer Only', '`introduce`, `status`, \n Commands that were still in testing: `announce`', false)
+            .addField('Developer Only', '`status`, \n Commands that were still in testing: more stuff coming soon', false)
             .setTimestamp()
             .setFooter('Brought To You By HistoBot');
         }else if(args.length > 0){
