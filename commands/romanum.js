@@ -1,11 +1,9 @@
-const Discord = require("../node_modules/discord.js");
-
 module.exports = {
     name: 'romanum',
     description: 'convert decimal to roman numerals',
     usage:'|romanum <decimalnum>',
     example: '|romanum 69',
-    execute(message, args){
+    execute(Discord, message, args){
         if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("I don't have permission to speak that");
         if(parseInt(args[0]) == NaN) return message.channel.send("That's not a number");
         if(args.join(" ") == '') return message.channel.send("Give me number");

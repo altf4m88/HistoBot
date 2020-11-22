@@ -1,16 +1,15 @@
-const Discord = require("../node_modules/discord.js");
-
 module.exports = {
     name: 'palindrome',
     description: 'check for palindrome',
     usage:'|palindrome <text-to-check>',
     example: '|palindrome racecar',
-    execute(message, args){
+    execute(Discord, message, args){
         if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("I don't have permission to speak that");
         if(args.join(" ") == '') return message.channel.send("Give me the words");
 
         const embed = new Discord.MessageEmbed()
-        .setTitle('Palindrome Check');
+        .setTitle('Palindrome Check')
+        .setColor('RANDOM');
 
         const palindrome = (str) => {
             let filteringRegex = /[a-z0-9]/gi;
@@ -33,9 +32,10 @@ module.exports = {
             .addField('String 1', ` \`\`\` ${string1} \`\`\`\ `, true)
             .addField('String 2', ` \`\`\` ${string2} \`\`\`\ `, true)
             .addField('Result', `${result}`, false);
-          
-            return message.channel.send(embed);
           }
-        palindrome(args.join(" "))
+
+        palindrome(args.join(" "));
+
+        return message.channel.send(embed);
     }
 }
