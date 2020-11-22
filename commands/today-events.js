@@ -1,4 +1,3 @@
-const Discord = require("../node_modules/discord.js")
 const pagination = require('../node_modules/discord.js-pagination');
 const fetch = require("node-fetch");
 const APIURL = require("../config.json").BASEURL;
@@ -9,21 +8,21 @@ module.exports = {
     description: 'List of historical events today',
     usage: '|today-events',
     example: '|today-events',
-    execute(message){
+    execute(Discord, message){
         const pages = [];
         let fieldsArr = [];
 
-        const setEmbedsMisc = (embed, eventDate) => {
+        const setEmbedsMisc = (embed) => {
             embed
             .setTitle(`Today Events In History`)
-            .setColor('RED')
+            .setColor('RANDOM')
             .setDescription(`Events That Shaped The World Today, Brought To You By HistoBot ('-')7`)
         }
 
         const setField = (eventData, eventDate) => {
                 let limit = 10;
                 let tempBeds = new Discord.MessageEmbed();
-                setEmbedsMisc(tempBeds, eventDate);
+                setEmbedsMisc(tempBeds);
 
 
                 for(let x = 0; x < eventData.length; x++){

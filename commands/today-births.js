@@ -1,4 +1,3 @@
-const Discord = require("../node_modules/discord.js")
 const pagination = require('../node_modules/discord.js-pagination');
 const fetch = require("node-fetch");
 const APIURL = require("../config.json").BASEURL;
@@ -8,14 +7,14 @@ module.exports = {
     description: 'List of historical figure born today',
     usage: '|today-births',
     example: '|today-births',
-    execute(message){
+    execute(Discord, message){
         const pages = [];
         let fieldsArr = [];
 
         const setEmbedsMisc = (embed, date) => {
             embed
             .setTitle(`Historical Figure Born On ${date}`)
-            .setColor('CYAN')
+            .setColor('RANDOM')
             .setDescription(`Some Were Destined To Change The World, Brought To You By HistoBot ('-')7`)
         }
 
