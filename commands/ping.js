@@ -3,7 +3,7 @@ module.exports = {
     description: 'ping command',
     usage:'|ping',
     example: '|ping',
-    execute(message, args){
+    execute(message){
         const timeTaken = Date.now() - message.createdTimestamp;
         message.reply(`This message had a latency of ${timeTaken}ms.`);
     }
