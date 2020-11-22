@@ -1,4 +1,3 @@
-const Discord = require("../node_modules/discord.js")
 const pagination = require('../node_modules/discord.js-pagination');
 const fetch = require("node-fetch");
 const APIURL = require("../config.json").BASEURL;
@@ -8,22 +7,21 @@ module.exports = {
     description: 'Give information of historical event on searched date',
     usage:'|search-events <date> <month>',
     example: '|search-events 22 3',
-    execute(message, args){
-        console.log(args)
+    execute(Discord, message, args){
         const pages = [];
         let fieldsArr = [];
 
-        const setEmbedsMisc = (embed) => {
+        const setEmbedsMisc = (embed, eventDate) => {
             embed
             .setTitle(`Historical Events on ${eventDate}`)
-            .setColor('RED')
+            .setColor('RANDOM')
             .setDescription(`Events That Shaped The World Today, Brought To You By HistoBot ('-')7`)
         }
 
         const setField = (eventData, eventDate) => {
                 let limit = 10;
                 let tempBeds = new Discord.MessageEmbed();
-                setEmbedsMisc(tempBeds);
+                setEmbedsMisc(tempBeds, eventDate);
 
 
                 for(let x = 0; x < eventData.length; x++){
@@ -62,7 +60,6 @@ module.exports = {
             
             const emojiList = ["⏪", "⏩"];
             const timeout = '300000';
-            console.log('sent');
             pagination(message, pages, emojiList, timeout)
         })
         .catch(e => {

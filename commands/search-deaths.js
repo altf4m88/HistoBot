@@ -1,4 +1,3 @@
-const Discord = require("../node_modules/discord.js")
 const pagination = require('../node_modules/discord.js-pagination');
 const fetch = require("node-fetch");
 const APIURL = require("../config.json").BASEURL;
@@ -8,14 +7,14 @@ module.exports = {
     description: 'List of historical figure died on searched date',
     usage:'|search-deaths <date> <months>',
     example: '|search-deaths 4 10',
-    execute(message, args){
+    execute(Discord, message, args){
         const pages = [];
         let fieldsArr = [];
 
         const setEmbedsMisc = (embed, date) => {
             embed
             .setTitle(`Historical Figure Died On ${date}`)
-            .setColor('GREY')
+            .setColor('RANDOM')
             .setDescription(`Requiescat im pace, Brought To You By HistoBot ('-')7`)
         }
 
