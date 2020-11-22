@@ -1,21 +1,18 @@
-const Discord = require("../node_modules/discord.js");
-
 module.exports = {
     name: 'announce',
     description: 'announcement',
     usage:'|announce <text-to-announce>',
     example: '|announce 2020 2 is confirmed',
-    execute(message){
+    execute(Discord, message, args){
         if(message.author.id !== "439976892343517184") return message.channel.send("Nope, you're not my master");
 
+        message.delete()
         const embed = new Discord.MessageEmbed()
-        .setTitle('🚨ANNOUNCEMENT DEAR COMRADES🚨')
-        .setThumbnail('https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
-        .setDescription(`
-        `)
-        .setFooter(``)
-        .setColor('#d40000')
+        .setTitle('🚨ANNOUNCEMENT🚨')
+        .setDescription(`${args.join(" ")}`)
+        .setFooter(`Brought to you by HistoBot ('-')7`)
+        .setColor('RANDOM')
 
-        message.channel.send(embed);
+        return message.channel.send(embed);
     }
 }
