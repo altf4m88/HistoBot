@@ -38,7 +38,7 @@ client.on("message", (message) => {
 
     switch(command){
         case("ping"):
-            client.commands.get('ping').execute(message, args);
+            client.commands.get('ping').execute(message);
             break;
         case("introduce"):
             client.commands.get('introduce').execute(message, args);
@@ -47,37 +47,37 @@ client.on("message", (message) => {
             client.commands.get('status').execute(client, message, args);
             break;
         case("today-events"):
-            client.commands.get('today-events').execute(message);
+            client.commands.get('today-events').execute(Discord, message);
             break;
         case("today-births"):
-            client.commands.get('today-births').execute(message);
+            client.commands.get('today-births').execute(Discord, message);
             break;
         case("today-deaths"):
-            client.commands.get('today-deaths').execute(message);
+            client.commands.get('today-deaths').execute(Discord, message);
             break;
         case("search-events"):
-            client.commands.get('search-events').execute(message, args);
+            client.commands.get('search-events').execute(Discord, message, args);
             break;
         case("search-births"):
-            client.commands.get('search-births').execute(message, args);
+            client.commands.get('search-births').execute(Discord, message, args);
             break;
         case("search-deaths"):
-            client.commands.get('search-deaths').execute(message, args);
+            client.commands.get('search-deaths').execute(Discord, message, args);
             break;
         case("good-comrade"):
             client.commands.get('good-comrade').execute(message, args);
             break;
         case("gulag"):
-            client.commands.get('gulag').execute(message, args);
+            client.commands.get('gulag').execute(Discord, message, args);
             break;
         case("announce"):
-            client.commands.get('announce').execute(client, message, args);
+            client.commands.get('announce').execute(Discord, message, args);
             break;
         case("medal"):
-            client.commands.get('medal').execute(client, message, args);
+            client.commands.get('medal').execute(Discord, client, message, args);
             break;
         case("help"):
-            client.commands.get('help').execute(message, args);
+            client.commands.get('help').execute(Discord, message, args);
             break;
         case("say"):
             client.commands.get('say').execute(message, args);
@@ -86,10 +86,13 @@ client.on("message", (message) => {
             client.commands.get('shout').execute(message, args);
             break;
         case("palindrome"):
-            client.commands.get('palindrome').execute(message, args);
+            client.commands.get('palindrome').execute(Discord, message, args);
             break;
         case("romanum"):
-            client.commands.get('romanum').execute(message, args);
+            client.commands.get('romanum').execute(Discord, message, args);
+            break;
+        case("caesar-ciphers"):
+            client.commands.get('caesar-ciphers').execute(Discord, message, args);
             break;
     }    
     
