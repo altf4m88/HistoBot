@@ -1,21 +1,24 @@
-const Discord = require("discord.js");
-
 module.exports = {
     name: 'gulag',
     description: 'GULAGED',
     usage:'|gulag <mention>',
-    example: '|gulag @comrade-ivan',
-    execute(message, args){
-        if(message.author.id !== "439976892343517184") return message.channel.send("Nope, you're not my master");
+    example: '|gulag @comrade-ivan <reason>',
+    execute(Discord, message, args){
+        
         let user = message.mentions.users.first() || message.author;
+        if(message.mentions.users.first() !== '') args.shift();
+        let reason = args.join(" ");
 
         const embed = new Discord.MessageEmbed()
         .setTitle(`🚨 ${user.username} GULAGED🚨`)
         .setThumbnail('https://memegenerator.net/img/instances/71686149/go-to-gulag.jpg')
-        .addField(`${user.username} has been sent to Gulag`, `Reason: Traitor to the motherland`, false)
-        .setFooter(`Slava Sovyetsky Soyuz ('-')/`)
-        .setColor('#d40000')
-
-        message.channel.send(embed)
+        .setFooter(`Press F`)
+        .setColor('RANDOM');
+        if(reason.length > 0){
+            embed.addField(`${user.username} has been sent to Gulag`, `Reason: ${reason}`, false)
+        } else {
+            embed.addField(`${user.username} has been sent to Gulag`, `Reason: Traitor to the motherland`, false)
+        }
+        return message.channel.send(embed)
     }
 }
