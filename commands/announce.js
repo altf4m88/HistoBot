@@ -4,7 +4,6 @@ module.exports = {
     usage:'|announce <text-to-announce>',
     example: '|announce 2020 2 is confirmed',
     execute(Discord, message, args){
-        if(message.author.id !== "439976892343517184") return message.channel.send("Nope, you're not my master");
 
         message.delete()
         const embed = new Discord.MessageEmbed()
