@@ -1,7 +1,7 @@
 module.exports = {
     name: 'medal',
     description: 'give medal to someone',
-    usage:'|medal <name / mention / me> <medal-type (iron-cross, red-star, victoria-cross, medal-of-honor)>',
+    usage:'|medal <name / name-two-word / mention / me> <medal-type (iron-cross, red-star, victoria-cross, medal-of-honor)>',
     example: '|medal @comrade-igor red-star',
     execute(Discord, client, message, args){
         let guild = client.guilds.cache.get(message.guild.id);
