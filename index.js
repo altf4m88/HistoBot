@@ -1,6 +1,13 @@
 const Discord = require("discord.js");
 const config = require("./config.json");
 const fs = require("fs");
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200);
+  res.end('ok');
+});
+server.listen(3000);
 
 const client = new Discord.Client();
 const prefix = "|";
