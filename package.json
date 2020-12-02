@@ -4,7 +4,7 @@
   "description": "\"this is a discord history-themed bot\"",
   "main": "index.js",
   "scripts": {
-    "start" : "npm start"
+    "start": "node index.js"
   },
   "author": "altf4m88",
   "license": "ISC",
@@ -12,6 +12,7 @@
     "discord-paginationembed": "^2.1.0",
     "discord.js": "^12.4.1",
     "discord.js-pagination": "^1.0.3",
+    "dotenv": "^8.2.0",
     "http": "0.0.1-security",
     "node-fetch": "^2.6.1"
   }
