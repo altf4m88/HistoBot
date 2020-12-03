@@ -102,6 +102,9 @@ client.on("message", (message) => {
         case("caesar-ciphers"):
             client.commands.get('caesar-ciphers').execute(Discord, message, args);
             break;
+        case("bot-stats"):
+            client.commands.get('bot-stats').execute(Discord, client, message);
+            break;
     }    
     
 })
