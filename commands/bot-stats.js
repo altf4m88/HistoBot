@@ -22,7 +22,27 @@ module.exports = {
             return parseFloat((a / Math.pow(c, f).toFixed(d)) + " " + e[f]);
         }
 
-        
+        const parseDur = (ms) => {
+            let seconds = ms/1000;
+            let days = parseInt(seconds/86400);
+            seconds = seconds % 86400;
+
+            let hours = parseInt(seconds / 3600);
+            seconds = seconds % 3600;
+
+            let minutes = parseInt(seconds / 60);
+            seconds = parseInt(seconds % 60);
+
+            if(days) {
+                return `${days} day, ${hours} hour, ${minutes} minutes`;
+            } else if (hours){
+                return `${hours} hour, ${minutes} minutes, ${seconds} seconds`;
+            } else if(minutes){
+                return `${minutes} minutes, ${seconds} seconds`;
+            } else {
+                return `${seconds} seconds`;
+            }
+        }
 
         cpuStat.usagePercent( (err, percent, seconds) => {
             if(err){
@@ -41,7 +61,8 @@ module.exports = {
             .setTitle('HistoBot Statistics')
             .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
             .addField('Bot Stats', `Server: ${guild} \n User: ${user} \n Channel: ${channel} \n Usage: ${usage} \n Node Version: ${Node} \n CPU Usage: ${CPU}`)
-            .addField('Physical Stats:',`CPU: ${cores} - ${cpuModel}`);
+            .addField('Physical Stats:',`CPU: ${cores} - ${cpuModel}`)
+            .addField('Uptime:',`${parseDur(client.uptime)}`);
 
             message.channel.send(embed);
 
