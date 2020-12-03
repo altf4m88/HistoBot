@@ -15,7 +15,7 @@ module.exports = {
             .addField('History Knowledge', '`today-events`, `today-births`, `today-deaths`, `search-events`, `search-births`, `search-deaths`,', false)
             .addField('Fun', '`gulag`, `medal`, `say`, `shout`', false)
             .addField('Misc', '`palindrome`, `romanum`, `caesar-ciphers`, `announce`', false)
-            .addField('Utility', '`ping`', false)
+            .addField('Utility', '`ping`, `bot-stats`', false)
             .addField('Developer Only', '`status`, \n Commands that were still in testing: more stuff coming soon', false)
             .setTimestamp()
             .setFooter('Brought To You By HistoBot');
