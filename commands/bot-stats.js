@@ -18,8 +18,7 @@ module.exports = {
             let d = b || 2;
             let e = ["B", "KB", "MB", "TB"];
             let f = Math.floor(Math.log(a) / Math.log(c));
-
-            return parseFloat((a / Math.pow(c, f).toFixed(d)) + " " + e[f]);
+            return parseFloat((a / Math.pow(c, f)).toFixed(d)) + " " + e[f]
         }
 
         const parseDur = (ms) => {
