@@ -12,8 +12,10 @@ module.exports = {
         let fieldsArr = [];
 
         const setEmbedsMisc = (embed, date) => {
+            let dateArray = date.split(" ");
+
             embed
-            .setTitle(`Historical Figure Died On ${date}`)
+            .setTitle(`Historical Figure Died On ${dateArray[1]} ${dateArray[0]}`)
             .setColor('RANDOM')
             .setDescription(`Requiescat im pace, Brought To You By HistoBot ('-')7`)
         }
