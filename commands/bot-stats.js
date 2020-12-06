@@ -6,7 +6,7 @@ const ms = require('ms');
 
 module.exports = {
     name: 'bot-stats',
-    description: 'show bot statistics',
+    description: 'show bot server, usage and physical statistics',
     usage:'|bot-stats',
     example: '|bot-stats',
     execute(Discord, client, message){
@@ -59,7 +59,7 @@ module.exports = {
             const embed = new Discord.MessageEmbed()
             .setTitle('HistoBot Statistics')
             .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
-            .addField('Server Stats', ` \`\`\`Server: ${guild} \n User: ${user} \n Channel: ${channel} \`\`\`\ `, true)
+            .addField('Server Stats', ` \`\`\` Server: ${guild} \n User: ${user} \n Channel: ${channel} \`\`\`\ `, true)
             .addField('Bot Usage', ` \`\`\` Usage: ${usage} \n Node Version: ${Node} \n CPU Usage: ${CPU}% \`\`\`\ `, true)
             .addField('Physical Stats:',` \`\`\` CPU: ${cores} - ${cpuModel} \`\`\` `, false)
             .addField('Uptime:',` \`\`\` ${parseDur(client.uptime)} \`\`\``, false);
