@@ -20,12 +20,13 @@ module.exports = {
 
         const setField = (eventData, eventDate) => {
                 let limit = 10;
+                let dateArray = eventDate.split(" ");
                 let tempBeds = new Discord.MessageEmbed();
                 setEmbedsMisc(tempBeds, eventDate);
 
 
                 for(let x = 0; x < eventData.length; x++){
-                    tempBeds.addField(`${eventDate} ${eventData[x].year}`, `${eventData[x].text}`, false);
+                    tempBeds.addField(`${dateArray[1]} ${dateArray[0]} ${eventData[x].year}`, `${eventData[x].text}`, false);
                     
                     if(x == limit){
                         fieldsArr.push(tempBeds.fields)
