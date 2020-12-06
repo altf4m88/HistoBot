@@ -13,7 +13,7 @@ module.exports = {
 
         const setEmbedsMisc = (embed, date) => {
 
-            let dateArray = eventDate.split(" ");
+            let dateArray = date.split(" ");
 
             embed
             .setTitle(`Historical Figure Died On ${dateArray[1]} ${dateArray[0]}`)
