@@ -105,6 +105,12 @@ client.on("message", (message) => {
         case("bot-stats"):
             client.commands.get('bot-stats').execute(Discord, client, message);
             break;
+        case("covid"):
+            client.commands.get('covid').execute(Discord, message, args);
+            break;
+        case("covid-country"):
+            client.commands.get('covid-country').execute(Discord, message, args);
+            break;
     }    
     
 })
