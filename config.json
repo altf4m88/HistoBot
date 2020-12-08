@@ -1,4 +1,5 @@
 {
     "BOT_TOKEN" : "",
-    "BASEURL" : "http://history.muffinlabs.com"
+    "BASEURL" : "http://history.muffinlabs.com",
+    "COVID_URL": "https://api.covid19api.com"
 }
