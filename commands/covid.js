@@ -9,8 +9,6 @@ module.exports = {
     usage:'|covid-global',
     example: '|covid',
     execute(Discord, message){
-        if(message.author.id !== "439976892343517184") return message.channel.send("Nope, you're not my master");
-        
         fetch(`${APIURL}/summary`)
         .then(response => response.json())
         .then(json => {
