@@ -14,14 +14,22 @@ module.exports = {
         fetch(`${APIURL}/summary`)
         .then(response => response.json())
         .then(json => {
+            let {NewConfirmed, TotalConfirmed, NewDeaths, TotalDeaths, NewRecovered, TotalRecovered} = json.Global;
+
+            const embed = new Discord.MessageEmbed()
+            .setTitle('Global COVID-19 Information 📊')
+            .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
+            .addField('Total Confirmed 🏥',` \`\`\` ${TotalConfirmed} \`\`\` `, true)
+            .addField('Total Deaths ☠️',` \`\`\` ${TotalDeaths} \`\`\``, true)
+            .addField('Total Recovered ⚕️',` \`\`\` ${TotalRecovered} \`\`\``, true)
+            .addField('New Confirmed 📈', ` \`\`\` ${NewConfirmed} \`\`\`\ `, true)
+            .addField('New Deaths 💀', ` \`\`\` ${NewDeaths} \`\`\`\ `, true)
+            .addField('New Recovered 🧍', ` \`\`\` ${NewRecovered} \`\`\`\ `, true);
             
-
-
-            console.log(json.Global)
+            message.channel.send(embed);
         })
-        .catch(err => console.error(err));
-        ;
-
+        .catch(err => {
+            console.error(err);
+        });
     }
-
 }
