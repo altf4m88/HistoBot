@@ -9,7 +9,6 @@ module.exports = {
     usage:'|covid-country <country-slug> OR |covid-country (With no arguments to show country slug info)',
     example: '|covid-country indonesia',
     execute(Discord, message, args){
-        if(message.author.id !== "439976892343517184") return message.channel.send("Nope, you're not my master");
         //https://api.covid19api.com/countries
         //https://api.covid19api.com/country/
         let pages = [];
