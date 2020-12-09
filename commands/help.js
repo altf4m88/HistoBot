@@ -10,7 +10,7 @@ module.exports = {
             embed.setColor('RANDOM')
 	        .setTitle(':book: HISTOBOT |HELP')
 	        .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
-	        .setDescription('Here are the commands that i currently supported, the prefix is `|` ')
+	        .setDescription('The prefix is `|`, write |help <command-name> for command information ')
 	        .setThumbnail('https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
             .addField('History Knowledge', '`today-events`, `today-births`, `today-deaths`, `search-events`, `search-births`, `search-deaths`,', false)
             .addField('COVID-19 Information', '`covid-global`, `covid-country`', false)
