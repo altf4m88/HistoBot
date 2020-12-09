@@ -70,6 +70,15 @@ module.exports = {
             .then(response => response.json())
             .then(json => {
                 if(json.message === "Not Found") return message.channel.send("Please check your country slug");
+                let data = json.pop();
+                let {Country, CountryCode, Confirmed, Deaths, Recovered, Active} = data;
+                let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                let year = today.getFullYear();
+                let month = today.getMonth();
+                let date = today.getDate();
+                let day = today.getDay();
+
+                
 
             });
         }
