@@ -6,7 +6,7 @@ module.exports = {
     name: 'covid-global',
     description: 'Give information for global new covid-19 cases',
     usage:'|covid-global',
-    example: '|covid',
+    example: '|covid-global',
     execute(Discord, message){
         fetch(`${APIURL}/summary`)
         .then(response => response.json())
