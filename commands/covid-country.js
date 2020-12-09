@@ -78,8 +78,20 @@ module.exports = {
                 let date = today.getDate();
                 let day = today.getDay();
 
+                const embed = new Discord.MessageEmbed()
+                .setTitle(`:flag_${CountryCode.toLowerCase()}: ${Country} COVID-19 Cases`)
+                .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
+                .setDescription(`${dayNames[day]}, ${date}-${month}-${year}`)
+                .addField('Confirmed 🏥',` \`\`\` ${Confirmed} \`\`\` `, true)
+                .addField('Deaths ☠️',` \`\`\` ${Deaths} \`\`\``, true)
+                .addField('Recovered ⚕️',` \`\`\` ${Recovered} \`\`\``, true)
+                .addField('Active Cases 🤒', ` \`\`\` ${Active} \`\`\`\ `, true)
                 
-
+                return message.channel.send(embed);
+            })
+            .catch(err => {
+                console.error();
+                return message.channel.send("Error, the API is down or the slug is wrong");
             });
         }
 
