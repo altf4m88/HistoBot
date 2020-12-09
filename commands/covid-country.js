@@ -1,3 +1,4 @@
+const pagination = require('../node_modules/discord.js-pagination');
 const fetch = require("node-fetch");
 const APIURL = require("../config.json").BASEURL;
 const today = new Date;
@@ -11,34 +12,36 @@ module.exports = {
         if(message.author.id !== "439976892343517184") return message.channel.send("Nope, you're not my master");
         //https://api.covid19api.com/countries
         //https://api.covid19api.com/country/
+        let pages = [];
+        let fieldsArr = [];
         let country = args.join(" ");
         
         const setCountryEmbedsMisc = (embed) => {
             embed
             .setTitle(`List of Available Country Data`)
             .setColor('RANDOM')
-            .setDescription(`Use the slug to request the COVID-19 information from specific countries, |covid-country <country-slug>`)
+            .setDescription(`Use |covid-country <country-slug> to request the data`)
         }
 
         const setCountryField = (covidData) => {
-                let limit = 50;
+                let limit = 15;
                 let tempBeds = new Discord.MessageEmbed();
-                setEmbedsMisc(tempBeds);
+                setCountryEmbedsMisc(tempBeds);
 
 
-                for(let x = 0; x < eventData.length; x++){
-                    tempBeds.addField(`${covidData[x].Country} :flag_${covidData[x].ISO2}:`, `Slug: ${covidData[x].Slug}`, false);
+                for(let x = 0; x < covidData.length; x++){
+                    tempBeds.addField(`${covidData[x].Country} :flag_${covidData[x].ISO2.toLowerCase()}:`, `Slug: ${covidData[x].Slug}`, false);
                     
                     if(x == limit){
                         fieldsArr.push(tempBeds.fields)
                         pages.push(tempBeds);
                         tempBeds.fields = []
                         tempBeds = new Discord.MessageEmbed();
-                        setEmbedsMisc(tempBeds);
+                        setCountryEmbedsMisc(tempBeds);
 
-                        limit += 50;
-                    } else if(limit >= eventData.length){
-                        if(x == eventData.length - 1){
+                        limit += 15;
+                    } else if(limit >= covidData.length){
+                        if(x == covidData.length - 1){
                             pages.push(tempBeds);
                         }
                     }
@@ -46,8 +49,22 @@ module.exports = {
             }
 
         if(!country){
-
-            
+            fetch('https://api.covid19api.com/countries')
+            .then(response => response.json())
+            .then(json => setCountryField(json))
+            .then(() => {
+                for(let i = 0; i < fieldsArr.length; i++){
+                    pages[i].fields = fieldsArr[i]; 
+                }
+                
+                const emojiList = ["⏪", "⏩"];
+                const timeout = '600000';
+                pagination(message, pages, emojiList, timeout)
+            })
+            .catch(err => {
+                console.log(err);
+                return message.channel.send('Error, the API did not respond')
+            })
 
             console.log("no country")
         }
