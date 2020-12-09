@@ -13,7 +13,7 @@ module.exports = {
 	        .setDescription('Here are the commands that i currently supported, the prefix is `|` ')
 	        .setThumbnail('https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
             .addField('History Knowledge', '`today-events`, `today-births`, `today-deaths`, `search-events`, `search-births`, `search-deaths`,', false)
-            .addField('COVID-19 Information', '`covid (in development)`, `covid-country (in development)`', false)
+            .addField('COVID-19 Information', '`covid-global`, `covid-country`', false)
             .addField('Fun', '`gulag`, `medal`, `say`, `shout`', false)
             .addField('Misc', '`palindrome`, `romanum`, `caesar-ciphers`, `announce`', false)
             .addField('Utility', '`ping`, `bot-stats`', false)
