@@ -85,7 +85,8 @@ module.exports = {
                 .addField('Deaths ☠️',` \`\`\` ${Deaths} \`\`\``, true)
                 .addField('Recovered ⚕️',` \`\`\` ${Recovered} \`\`\``, true)
                 .addField('Active Cases 🤒', ` \`\`\` ${Active} \`\`\`\ `, true)
-                
+                .setFooter('Stay safe Comrade 😷!')
+
                 return message.channel.send(embed);
             })
             .catch(err => {
