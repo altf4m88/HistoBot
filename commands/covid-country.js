@@ -24,7 +24,7 @@ module.exports = {
         }
 
         const setCountryField = (covidData) => {
-                let limit = 15;
+                let limit = 10;
                 let tempBeds = new Discord.MessageEmbed();
                 setCountryEmbedsMisc(tempBeds);
 
@@ -39,7 +39,7 @@ module.exports = {
                         tempBeds = new Discord.MessageEmbed();
                         setCountryEmbedsMisc(tempBeds);
 
-                        limit += 15;
+                        limit += 10;
                     } else if(limit >= covidData.length){
                         if(x == covidData.length - 1){
                             pages.push(tempBeds);
@@ -65,8 +65,6 @@ module.exports = {
                 console.log(err);
                 return message.channel.send('Error, the API did not respond')
             })
-
-            console.log("no country")
         }
 
     }
