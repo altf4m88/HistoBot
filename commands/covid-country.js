@@ -65,6 +65,13 @@ module.exports = {
                 console.log(err);
                 return message.channel.send('Error, the API did not respond')
             })
+        } else {
+            fetch(`https://api.covid19api.com/country/${country}`)
+            .then(response => response.json())
+            .then(json => {
+                if(json.message === "Not Found") return message.channel.send("Please check your country slug");
+
+            });
         }
 
     }
