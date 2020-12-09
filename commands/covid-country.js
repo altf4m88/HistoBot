@@ -30,7 +30,7 @@ module.exports = {
 
 
                 for(let x = 0; x < covidData.length; x++){
-                    tempBeds.addField(`${covidData[x].Country} :flag_${covidData[x].ISO2.toLowerCase()}:`, `Slug: ${covidData[x].Slug}`, false);
+                    tempBeds.addField(`:flag_${covidData[x].ISO2.toLowerCase()}: ${covidData[x].Country}`, `Slug: ${covidData[x].Slug}`, false);
                     
                     if(x == limit){
                         fieldsArr.push(tempBeds.fields)
