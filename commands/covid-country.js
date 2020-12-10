@@ -9,8 +9,6 @@ module.exports = {
     usage:'|covid-country <country-slug> OR |covid-country (With no arguments to show country slug info)',
     example: '|covid-country indonesia',
     execute(Discord, message, args){
-        //https://api.covid19api.com/countries
-        //https://api.covid19api.com/country/
         let pages = [];
         let fieldsArr = [];
         let country = args.join(" ");
@@ -48,7 +46,7 @@ module.exports = {
             }
 
         if(!country){
-            fetch('https://api.covid19api.com/countries')
+            fetch(`${APIURL}/countries`)
             .then(response => response.json())
             .then(json => setCountryField(json))
             .then(() => {
@@ -65,7 +63,7 @@ module.exports = {
                 return message.channel.send('Error, the API did not respond')
             })
         } else {
-            fetch(`https://api.covid19api.com/country/${country}`)
+            fetch(`${APIURL}/country/${country}`)
             .then(response => response.json())
             .then(json => {
                 if(json.message === "Not Found") return message.channel.send("Please check your country slug");
@@ -90,7 +88,7 @@ module.exports = {
                 return message.channel.send(embed);
             })
             .catch(err => {
-                console.error();
+                console.error(err);
                 return message.channel.send("Error, the API is down or the slug is wrong");
             });
         }
