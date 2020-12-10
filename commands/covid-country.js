@@ -1,6 +1,6 @@
 const pagination = require('../node_modules/discord.js-pagination');
 const fetch = require("node-fetch");
-const APIURL = require("../config.json").BASEURL;
+const APIURL = require("../config.json").COVID_URL;
 const today = new Date;
 
 module.exports = {
