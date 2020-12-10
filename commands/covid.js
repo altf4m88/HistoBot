@@ -20,7 +20,7 @@ module.exports = {
             let day = today.getDay();
 
             const embed = new Discord.MessageEmbed()
-            .setTitle('Global COVID-19 Information 📊')
+            .setTitle('🌎 Global COVID-19 Information 🌏')
             .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
             .setDescription(`${dayNames[day]}, ${date}-${month}-${year}`)
             .addField('Total Confirmed 🏥',` \`\`\` ${TotalConfirmed} \`\`\` `, true)
@@ -28,12 +28,14 @@ module.exports = {
             .addField('Total Recovered ⚕️',` \`\`\` ${TotalRecovered} \`\`\``, true)
             .addField('New Confirmed 📈', ` \`\`\` ${NewConfirmed} \`\`\`\ `, true)
             .addField('New Deaths 💀', ` \`\`\` ${NewDeaths} \`\`\`\ `, true)
-            .addField('New Recovered 🧍', ` \`\`\` ${NewRecovered} \`\`\`\ `, true);
-            
+            .addField('New Recovered 🧍', ` \`\`\` ${NewRecovered} \`\`\`\ `, true)
+            .setFooter('Stay safe Comrade! 😷');
+
             message.channel.send(embed);
         })
         .catch(err => {
             console.error(err);
+            message.channel.send("Error, looks like the API didn't respond");
         });
     }
 }
