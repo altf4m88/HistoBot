@@ -13,7 +13,7 @@ module.exports = {
         client.user.setPresence({
             activity: {
                 name: statusStr,
-                type: 0
+                type: "LISTENING"
             }
         })
 
