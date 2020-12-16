@@ -17,7 +17,7 @@ module.exports = {
             .addField('Fun', '`gulag`, `medal`, `say`, `shout`', false)
             .addField('Misc', '`palindrome`, `romanum`, `caesar-ciphers`, `announce`', false)
             .addField('Utility', '`ping`, `bug-report`', false)
-            .addField('Developer Only', '`status` `bot-stats`, \n Commands that were still in testing: `meme`', false)
+            .addField('Developer Only', '`status`, `bot-stats`, \n Commands that were still in testing: `meme`', false)
             .setTimestamp()
             .setFooter('Brought To You By HistoBot');
         }else if(args.length > 0){
