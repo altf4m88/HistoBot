@@ -4,7 +4,6 @@ module.exports = {
     usage:'|bug-report <bug-to-report>',
     example: '|bug-report oh shit vault 101 overrun by bugs, send help!',
     execute(client, Discord, message, args){
-        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("I don't have permission to speak that");
         if(args.join(" ") == '') return message.channel.send("What should i report?");
 
         let reportEmbed = new Discord.MessageEmbed()
