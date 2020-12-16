@@ -115,6 +115,9 @@ client.on("message", (message) => {
         case("bug-report"):
             client.commands.get('bug-report').execute(client, Discord, message, args);
             break;
+        case("uptime"):
+            client.commands.get('uptime').execute(message);
+            break;
     }    
     
 })
