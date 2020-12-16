@@ -3,7 +3,7 @@ module.exports = {
     description: 'show bot uptime',
     usage:'|uptime',
     example: '|uptime',
-    execute(message){
+    execute(client, Discord, message){
         if(message.author.id !== process.env.DEVELOPER_ID) return message.channel.send("Nope, you're not my developer");
 
         const parseDur = (ms) => {
@@ -29,7 +29,6 @@ module.exports = {
         }
 
         let embed = new Discord.MessageEmbed()
-        .setTitle('Bot Uptime')
         .setColor('RANDOM')
         .addField('Uptime :' , ` \`\`\` ${parseDur(client.uptime)} \`\`\` `, false)
         .setTimestamp()
