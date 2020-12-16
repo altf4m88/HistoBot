@@ -112,7 +112,7 @@ client.on("message", (message) => {
             client.commands.get('covid-country').execute(Discord, message, args);
             break;
         case("bug-report"):
-            client.commands.get('bug-report').execute(Discord, message, args);
+            client.commands.get('bug-report').execute(client, Discord, message, args);
             break;
     }    
     
