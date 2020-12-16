@@ -7,9 +7,6 @@ module.exports = {
         if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("I don't have permission to speak that");
         if(args.join(" ") == '') return message.channel.send("What should i report?");
 
-
-        console.log(message.author);
-
         let reportEmbed = new Discord.MessageEmbed()
         .setTitle('Bug Report')
         .setColor('RANDOM')
@@ -17,7 +14,7 @@ module.exports = {
         .setDescription('Sir! New bug report!')
         .addField('Problem', ` \`\`\` ${args.join(" ")} \`\`\` `, false)
         .setTimestamp()
-        .setFooter('Sent by message.author.');
+        .setFooter(`Sent by ${message.author.username}`);
 
 
         let replyEmbed = new Discord.MessageEmbed()
@@ -27,7 +24,7 @@ module.exports = {
         .setDescription('Your report has been sent!')
         .addField('Your Issue: ', ` \`\`\` ${args.join(" ")} \`\`\` `, false)
         .setTimestamp()
-        .setFooter('Sorry For The Inconvenience :pensive:');
+        .setFooter('Sorry For The Inconvenience 😔');
 
         client.users.cache.get(process.env.DEVELOPER_ID).send(reportEmbed);
         message.channel.send(replyEmbed);
