@@ -16,8 +16,8 @@ module.exports = {
             .addField('COVID-19 Information', '`covid-global`, `covid-country`', false)
             .addField('Fun', '`gulag`, `medal`, `say`, `shout`', false)
             .addField('Misc', '`palindrome`, `romanum`, `caesar-ciphers`, `announce`', false)
-            .addField('Utility', '`ping`, `bot-stats`', false)
-            .addField('Developer Only', '`status`, \n Commands that were still in testing: more stuff coming soon', false)
+            .addField('Utility', '`ping`, `bug-report`', false)
+            .addField('Developer Only', '`status` `bot-stats`, \n Commands that were still in testing: `meme`', false)
             .setTimestamp()
             .setFooter('Brought To You By HistoBot');
         }else if(args.length > 0){
