@@ -30,7 +30,8 @@ client.once("ready", () => {
     console.log("Jawohl herr Hauptsturmfuhrer!")
     client.user.setPresence({
         activity: {
-            name: "|help for help Comrade!"
+            name: "|help for help Comrade!",
+            type: "LISTENING"
         }
     })
 })
