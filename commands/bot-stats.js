@@ -10,7 +10,7 @@ module.exports = {
     usage:'|bot-stats',
     example: '|bot-stats',
     execute(Discord, client, message){
-
+        if(message.author.id !== process.env.DEVELOPER_ID) return message.channel.send("Nope, you're not my master");
         const formatBytes = (a, b) => {
             if(a == 0) return "0 Bytes";
 
