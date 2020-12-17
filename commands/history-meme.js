@@ -30,7 +30,7 @@ module.exports = {
             .setTitle(`${title}`)
             .setURL(`${postURL}`)
             .setColor('RANDOM')
-            .setFooter(`👍 ${upvotes} 👎 ${downvotes} 💬 ${}`)
+            .setFooter(`👍 ${upvotes} 👎 ${downvotes} 💬 `)
 
             message.channel.send(embed);
         })  
