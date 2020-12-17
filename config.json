@@ -2,5 +2,5 @@
     "BOT_TOKEN" : "",
     "BASEURL" : "http://history.muffinlabs.com",
     "COVID_URL": "https://api.covid19api.com",
-    "MEME_URL": "https://www.reddit.com/r/HistoryMemes/"
+    "SUBREDDIT": "HistoryMemes"
 }

@@ -1,5 +1,7 @@
-const got = require("got");
-const APIURL = require("../config.json").MEME_URL;
+const SUBREDDIT = require("../config.json").SUBREDDIT;
+const reddit = require("random-reddit");
+
+
 
 module.exports = {
     name: 'history-meme',
@@ -7,24 +9,30 @@ module.exports = {
     usage:'|history-meme',
     example: '|history-meme',
     execute(Discord, message){
-        const embed = new Discord.MessageEmbed()
-        got(`${APIURL}/random/.json`)
-        .then(response => {
-            let content = JSON.parse(response.body);
-            let permalink = content[0].data.children[0].data.permalink;
-            let memeUrl = `https://reddit.com${permalink}`;
-            let memeImage = content[0].data.children[0].data.url;
-            let memeTitle = content[0].data.children[0].data.title;
-            let memeUpvotes = content[0].data.children[0].data.ups;
-            let memeDownvotes = content[0].data.children[0].data.downs;
-            let memeNumComments = content[0].data.children[0].data.num_comments;
-            
-            embed.setTitle(`${memeTitle}`)
-            embed.setURL(`${memeUrl}`)
-            embed.setImage(memeImage)
-            embed.setColor('RANDOM')
-            embed.setFooter(`👍 ${memeUpvotes} 👎 ${memeDownvotes} 💬 ${memeNumComments}`)
+
+        let options = {
+            imageOnly: true,
+            allowNSFW: true
+         };
+
+        reddit.getPost(SUBREDDIT, options)
+        .then(post => { //Make sure to change 'memes' with whatever subreddit you want
+
+            console.log(post)
+            let title = post.title;
+            let content = post.text;
+            let postURL = post.permalink;
+            let postAuthor = post.author;
+            let upvotes = post.upvotes;
+            let downvotes = post.downvots;
+
+            const embed = new Discord.MessageEmbed()
+            .setTitle(`${title}`)
+            .setURL(`${postURL}`)
+            .setColor('RANDOM')
+            .setFooter(`👍 ${upvotes} 👎 ${downvotes} 💬 ${}`)
+
             message.channel.send(embed);
-        })
+        })  
     }
 }

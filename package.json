@@ -14,12 +14,12 @@
     "discord.js": "^12.4.1",
     "discord.js-pagination": "^1.0.3",
     "dotenv": "^8.2.0",
-    "got": "^11.8.1",
     "http": "0.0.1-security",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "ms": "^2.1.2",
     "node-fetch": "^2.6.1",
-    "os": "^0.1.1"
+    "os": "^0.1.1",
+    "random-reddit": "^1.2.0"
   }
 }
