@@ -1,4 +1,4 @@
-const fetch = require("node-fetch");
+const got = require("got");
 const APIURL = require("../config.json").MEME_URL;
 
 module.exports = {
@@ -7,7 +7,6 @@ module.exports = {
     usage:'|history-meme',
     example: '|history-meme',
     execute(Discord, message){
-
         const embed = new Discord.MessageEmbed()
         got('https://www.reddit.com/r/memes/random/.json')
         .then(response => {
