@@ -8,10 +8,9 @@ module.exports = {
     example: '|history-meme',
     execute(Discord, message){
         const embed = new Discord.MessageEmbed()
-        got('https://www.reddit.com/r/memes/random/.json')
+        got(`${APIURL}/random/.json`)
         .then(response => {
             let content = JSON.parse(response.body);
-            console.log(content);
             let permalink = content[0].data.children[0].data.permalink;
             let memeUrl = `https://reddit.com${permalink}`;
             let memeImage = content[0].data.children[0].data.url;
@@ -19,6 +18,7 @@ module.exports = {
             let memeUpvotes = content[0].data.children[0].data.ups;
             let memeDownvotes = content[0].data.children[0].data.downs;
             let memeNumComments = content[0].data.children[0].data.num_comments;
+            
             embed.setTitle(`${memeTitle}`)
             embed.setURL(`${memeUrl}`)
             embed.setImage(memeImage)
