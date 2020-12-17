@@ -15,7 +15,7 @@ module.exports = {
             allowNSFW: true
          };
 
-        reddit.getPost(SUBREDDIT, options)
+        reddit.getImage(SUBREDDIT, options)
         .then(post => { //Make sure to change 'memes' with whatever subreddit you want
 
             console.log(post)
