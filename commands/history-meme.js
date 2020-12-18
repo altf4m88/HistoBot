@@ -11,8 +11,10 @@ module.exports = {
         const embed = new Discord.MessageEmbed();
         got(SUBREDDIT)
 		.then(response => {
-			const content = JSON.parse(response.body);
-			const post = content.data.children[Math.floor(Math.random() * 25) - 1];
+            const content = JSON.parse(response.body);
+            let index = Math.floor(Math.random() * 25) - 1;
+            console.log(index);
+			const post = content.data.children[index];
 
 			const permalink = post.data.permalink;
 			const memeUrl = `https://reddit.com${permalink}`;

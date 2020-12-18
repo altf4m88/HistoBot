@@ -3,5 +3,5 @@
     "BASEURL" : "http://history.muffinlabs.com",
     "COVID_URL": "https://api.covid19api.com",
     "SUBREDDIT": "HistoryMemes",
-    "MEME_URL" : "https://www.reddit.com/r/HistoryMemes/hot/.json"
+    "MEME_URL" : "https://www.reddit.com/r/HistoryMemes/top/.json"
 }
