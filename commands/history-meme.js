@@ -1,6 +1,5 @@
-const SUBREDDIT = require("../config.json").SUBREDDIT;
-const reddit = require("random-reddit");
-
+const SUBREDDIT = require("../config.json").MEME_URL;
+const got = require("got");
 
 
 module.exports = {
@@ -9,30 +8,28 @@ module.exports = {
     usage:'|history-meme',
     example: '|history-meme',
     execute(Discord, message){
+        const embed = new Discord.MessageEmbed();
+        got(SUBREDDIT)
+		.then(response => {
+			const [list] = JSON.parse(response.body);
+			const [post] = list.data.children;
 
-        let options = {
-            imageOnly: true,
-            allowNSFW: true
-         };
+			const permalink = post.data.permalink;
+			const memeUrl = `https://reddit.com${permalink}`;
+			const memeImage = post.data.url;
+			const memeTitle = post.data.title;
+			const memeUpvotes = post.data.ups;
+			const memeNumComments = post.data.num_comments;
 
-        reddit.getImage(SUBREDDIT, options)
-        .then(post => { //Make sure to change 'memes' with whatever subreddit you want
+			embed.setTitle(`${memeTitle}`);
+			embed.setURL(`${memeUrl}`);
+			embed.setColor('RANDOM');
+			embed.setImage(memeImage);
+			embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
 
-            console.log(post)
-            let title = post.title;
-            let content = post.text;
-            let postURL = post.permalink;
-            let postAuthor = post.author;
-            let upvotes = post.upvotes;
-            let downvotes = post.downvots;
+			message.channel.send(embed);
 
-            const embed = new Discord.MessageEmbed()
-            .setTitle(`${title}`)
-            .setURL(`${postURL}`)
-            .setColor('RANDOM')
-            .setFooter(`👍 ${upvotes} 👎 ${downvotes} 💬 `)
-
-            message.channel.send(embed);
-        })  
+        
+        })
     }
 }
