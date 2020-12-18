@@ -12,13 +12,14 @@ module.exports = {
         got(SUBREDDIT)
 		.then(response => {
 			const content = JSON.parse(response.body);
-			const post = content.data.children[0];
+			const post = content.data.children[Math.floor(Math.random() * 25) - 1];
 
 			const permalink = post.data.permalink;
 			const memeUrl = `https://reddit.com${permalink}`;
 			const memeImage = post.data.url;
 			const memeTitle = post.data.title;
-			const memeUpvotes = post.data.ups;
+            const memeUpvotes = post.data.ups;
+            const memeDownvotes = post.data.downs;
 			const memeNumComments = post.data.num_comments;
 
 			embed.setTitle(`${memeTitle}`);
