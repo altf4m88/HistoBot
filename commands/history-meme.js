@@ -12,7 +12,7 @@ module.exports = {
         got(SUBREDDIT)
 		.then(response => {
 			const content = JSON.parse(response.body);
-			const post = content[0].data.children[0];
+			const post = content.data.children[0];
 
 			const permalink = post.data.permalink;
 			const memeUrl = `https://reddit.com${permalink}`;
