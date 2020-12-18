@@ -22,11 +22,12 @@ module.exports = {
             const memeDownvotes = post.data.downs;
 			const memeNumComments = post.data.num_comments;
 
-			embed.setTitle(`${memeTitle}`);
+            embed.setTitle(`${memeTitle}`);
+            embed.setDescription('From /r/HistoryMemes');
 			embed.setURL(`${memeUrl}`);
 			embed.setColor('RANDOM');
 			embed.setImage(memeImage);
-			embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
+			embed.setFooter(`🔼 ${memeUpvotes} 🔽${memeDownvotes} 💬 ${memeNumComments}`);
 
 			message.channel.send(embed);
         
