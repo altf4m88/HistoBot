@@ -14,6 +14,10 @@ module.exports = {
             const content = JSON.parse(response.body);
             let index = Math.floor(Math.random() * 25) - 1;
             console.log(index);
+            while(index == prevIndex){
+                index = Math.floor(Math.random() * 25) - 1;
+            }
+            let prevIndex = index;
 			const post = content.data.children[index];
 
 			const permalink = post.data.permalink;
