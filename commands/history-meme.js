@@ -11,8 +11,8 @@ module.exports = {
         const embed = new Discord.MessageEmbed();
         got(SUBREDDIT)
 		.then(response => {
-			const [list] = JSON.parse(response.body);
-			const [post] = list.data.children;
+			const content = JSON.parse(response.body);
+			const post = content[0].data.children[0];
 
 			const permalink = post.data.permalink;
 			const memeUrl = `https://reddit.com${permalink}`;
@@ -28,7 +28,6 @@ module.exports = {
 			embed.setFooter(`👍 ${memeUpvotes} 💬 ${memeNumComments}`);
 
 			message.channel.send(embed);
-
         
         })
     }
