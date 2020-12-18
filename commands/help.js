@@ -12,7 +12,7 @@ module.exports = {
 	        .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
 	        .setDescription('The prefix is `|`, write |help <command-name> for command information ')
 	        .setThumbnail('https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
-            .addField('History Knowledge', '`today-events`, `today-births`, `today-deaths`, `search-events`, `search-births`, `search-deaths`,', false)
+            .addField('History Knowledge', '`today-events`, `today-births`, `today-deaths`, `search-events`, `search-births`, `search-deaths`, `history-meme(work in progress)`', false)
             .addField('COVID-19 Information', '`covid-global`, `covid-country`', false)
             .addField('Fun', '`gulag`, `medal`, `say`, `shout`', false)
             .addField('Misc', '`palindrome`, `romanum`, `caesar-ciphers`, `announce`', false)
