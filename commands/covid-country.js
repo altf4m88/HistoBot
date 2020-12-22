@@ -67,7 +67,7 @@ module.exports = {
                 return message.channel.send('Error, the API did not respond')
             })
         } else {
-            fetch(`${APIURL}/country/${country}?from=2020-03-01T00:00:00Z&to=${year-month-date}T00:00:00Z`)
+            fetch(`${APIURL}/total/country/${country}`)
             .then(response => response.json())
             .then(json => {
                 if(json.message === "Not Found") return message.channel.send("Please check your country slug");
