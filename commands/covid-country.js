@@ -2,6 +2,10 @@ const pagination = require('../node_modules/discord.js-pagination');
 const fetch = require("node-fetch");
 const APIURL = require("../config.json").COVID_URL;
 const today = new Date;
+let year = today.getFullYear();
+let month = today.getMonth() + 1;
+let date = today.getDate();
+let day = today.getDay();
 
 module.exports = {
     name: 'covid-country',
@@ -63,17 +67,13 @@ module.exports = {
                 return message.channel.send('Error, the API did not respond')
             })
         } else {
-            fetch(`${APIURL}/country/${country}`)
+            fetch(`${APIURL}/country/${country}?from=2020-03-01T00:00:00Z&to=${year-month-date}T00:00:00Z`)
             .then(response => response.json())
             .then(json => {
                 if(json.message === "Not Found") return message.channel.send("Please check your country slug");
                 let data = json.pop();
                 let {Country, CountryCode, Confirmed, Deaths, Recovered, Active} = data;
                 let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-                let year = today.getFullYear();
-                let month = today.getMonth() + 1;
-                let date = today.getDate();
-                let day = today.getDay();
 
                 const embed = new Discord.MessageEmbed()
                 .setTitle(`:flag_${CountryCode.toLowerCase()}: ${Country} COVID-19 Cases`)
