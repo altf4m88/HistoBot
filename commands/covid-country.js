@@ -90,7 +90,7 @@ module.exports = {
                 let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
                 const embed = new Discord.MessageEmbed()
-                .setTitle(`:flag_${CountryCode.toLowerCase()}: ${Country} COVID-19 Cases`)
+                .setTitle(`:flag_${CountryCode.ISO2.toLowerCase()}: ${Country} COVID-19 Cases`)
                 .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
                 .setDescription(`${dayNames[day]}, ${date}-${month}-${year}`)
                 .addField('Confirmed 🏥',` \`\`\` ${Confirmed} \`\`\` `, true)
