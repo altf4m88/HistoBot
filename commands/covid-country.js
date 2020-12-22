@@ -71,7 +71,7 @@ module.exports = {
                 let {Country, CountryCode, Confirmed, Deaths, Recovered, Active} = data;
                 let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
                 let year = today.getFullYear();
-                let month = today.getMonth();
+                let month = today.getMonth() + 1;
                 let date = today.getDate();
                 let day = today.getDay();
 
