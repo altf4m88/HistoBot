@@ -49,17 +49,18 @@ module.exports = {
                 }
         }
 
-        const getCountryCode = (name) =>{
-            fetch(`${APIURL}/countries`)
-            .then(response => response.json())
-            .then(json => {
-                json.forEach(i => {
-                    if(i["Slug"] == name){
-                        return{ ISO2 : i["ISO2"]};
-                    }
-                });
+        const getCountryCode = async (name) =>{
+            let response = await fetch(`${APIURL}/countries`);
+            let json = await response.json();
+            let ISO2 = '';
+
+            json.forEach(i => {
+                if(i["Slug"] == name){
+                    ISO2 = i["ISO2"];
+                }
             });
 
+            return ISO2;
         }
 
         if(!countrySlug){
@@ -82,15 +83,16 @@ module.exports = {
         } else {
             fetch(`${APIURL}/total/country/${countrySlug}`)
             .then(response => response.json())
-            .then(json => {
+            .then(async json => {
                 if(json.message === "Not Found") return message.channel.send("Please check your country slug");
                 let data = json.pop();
                 let {Country, Confirmed, Deaths, Recovered, Active} = data;
-                let CountryCode = getCountryCode(countrySlug)
+                let ISO2Code = await getCountryCode(countrySlug);
+
                 let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
                 const embed = new Discord.MessageEmbed()
-                .setTitle(`:flag_${CountryCode.ISO2.toLowerCase()}: ${Country} COVID-19 Cases`)
+                .setTitle(`:flag_${ISO2Code.toLowerCase()}: ${Country} COVID-19 Cases`)
                 .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
                 .setDescription(`${dayNames[day]}, ${date}-${month}-${year}`)
                 .addField('Confirmed 🏥',` \`\`\` ${Confirmed} \`\`\` `, true)
@@ -103,7 +105,7 @@ module.exports = {
             })
             .catch(err => {
                 console.error(err);
-                return message.channel.send("Error, the API is down or the slug is wrong");
+                return message.channel.send("Error, the API is down or the slug is wrong (or could be internal error)");
             });
         }
 
