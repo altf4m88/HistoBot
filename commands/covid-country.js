@@ -15,7 +15,7 @@ module.exports = {
     execute(Discord, message, args){
         let pages = [];
         let fieldsArr = [];
-        let country = args.join(" ");
+        let countrySlug = args.join(" ");
         
         const setCountryEmbedsMisc = (embed) => {
             embed
@@ -47,9 +47,22 @@ module.exports = {
                         }
                     }
                 }
-            }
+        }
 
-        if(!country){
+        const getCountryCode = (name) =>{
+            fetch(`${APIURL}/countries`)
+            .then(response => response.json())
+            .then(json => {
+                json.forEach(i => {
+                    if(i["Slug"] == name){
+                        return{ ISO2 : i["ISO2"]};
+                    }
+                });
+            });
+
+        }
+
+        if(!countrySlug){
             fetch(`${APIURL}/countries`)
             .then(response => response.json())
             .then(json => setCountryField(json))
@@ -67,12 +80,13 @@ module.exports = {
                 return message.channel.send('Error, the API did not respond')
             })
         } else {
-            fetch(`${APIURL}/total/country/${country}`)
+            fetch(`${APIURL}/total/country/${countrySlug}`)
             .then(response => response.json())
             .then(json => {
                 if(json.message === "Not Found") return message.channel.send("Please check your country slug");
                 let data = json.pop();
-                let {Country, CountryCode, Confirmed, Deaths, Recovered, Active} = data;
+                let {Country, Confirmed, Deaths, Recovered, Active} = data;
+                let CountryCode = getCountryCode(countrySlug)
                 let dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
                 const embed = new Discord.MessageEmbed()
