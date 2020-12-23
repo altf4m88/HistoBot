@@ -119,7 +119,9 @@ client.on("message", (message) => {
             client.commands.get('uptime').execute(client, Discord, message);
             break;
         case("history-meme"):
-        client.commands.get('history-meme').execute(Discord, message);
+            client.commands.get('history-meme').execute(Discord, message);
+        case("joke"):
+            client.commands.get('joke').execute(Discord, message, args);
     }    
     
 })
