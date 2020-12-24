@@ -16,9 +16,9 @@ module.exports = {
             .then(json => {
                 let joke = json[0];
 
-                embed.setTitle("Jokes")
+                embed
                 .setColor('RANDOM')
-                .addField(`${joke.setup}` , ` \`\`\` *${joke.punchline}* \`\`\`\ `, false)
+                .addField(`${joke.setup}` , ` \`\`\` ${joke.punchline} \`\`\`\ `, false)
                 .setFooter("I hope that's a good one");
 
                 return message.channel.send(embed)
@@ -28,9 +28,9 @@ module.exports = {
             fetch(`${APIURL}/random_joke`)
             .then(response => response.json())
             .then(joke => {
-                embed.setTitle("Jokes")
+                embed
                 .setColor('RANDOM')
-                .addField(`${joke.setup}` , ` \`\`\` *${joke.punchline}* \`\`\`\ `, false)
+                .addField(`${joke.setup}` , ` \`\`\` ${joke.punchline} \`\`\`\ `, false)
                 .setFooter("You can select jokes from this category: General, Programming, Knock-Knock");
 
                 return message.channel.send(embed)
