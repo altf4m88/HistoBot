@@ -14,7 +14,7 @@ module.exports = {
 	        .setThumbnail('https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
             .addField('History Knowledge', '`today-events`, `today-births`, `today-deaths`, `search-events`, `search-births`, `search-deaths`', false)
             .addField('COVID-19 Information', '`covid-global`, `covid-country`', false)
-            .addField('Fun', '`history-meme(work in progress)`, `joke`, `gulag`, `medal`, `say`, `shout`', false)
+            .addField('Fun', '`history-meme`, `joke`, `gulag`, `medal`, `say`, `shout`', false)
             .addField('Misc', '`palindrome`, `romanum`, `caesar-ciphers`, `announce`', false)
             .addField('Utility', '`ping`, `bug-report`', false)
             .addField('Developer Only', '`status`, `bot-stats`, `uptime`, \n Commands that were still in testing: ...', false)
@@ -28,8 +28,8 @@ module.exports = {
 	        .setTitle(':book: HISTOBOT |HELP')
 	        .setAuthor('HistoBot', 'https://i.kym-cdn.com/photos/images/original/001/464/390/36d.jpg')
             .setDescription(`${command.description}`)
-            .addField('Usage', `${command.usage}`, true)
-            .addField('Example', `${command.example}`, true)
+            .addField('Usage', `\`${command.usage}\``, true)
+            .addField('Example', `\`${command.example}\``, true)
             .setFooter('Brought To You By HistoBot');
             console.log(command);
         } else{
