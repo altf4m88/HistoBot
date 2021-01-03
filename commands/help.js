@@ -18,6 +18,7 @@ module.exports = {
             .addField('Misc', '`palindrome`, `romanum`, `caesar-ciphers`, `announce`', false)
             .addField('Utility', '`ping`, `bug-report`', false)
             .addField('Developer Only', '`status`, `bot-stats`, `uptime`, \n Commands that were still in testing: ...', false)
+            .addField('Full Documentation:', 'You can check full command documentation on this link: https://HistoBot-Documentation.fadhilm.repl.co', false)
             .setTimestamp()
             .setFooter('Brought To You By HistoBot');
         }else if(args.length > 0){
