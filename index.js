@@ -120,8 +120,10 @@ client.on("message", (message) => {
             break;
         case("history-meme"):
             client.commands.get('history-meme').execute(Discord, message);
+            break;
         case("joke"):
             client.commands.get('joke').execute(Discord, message, args);
+            break;
     }    
     
 })
