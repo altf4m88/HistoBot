@@ -14,12 +14,11 @@ module.exports = {
             const content = JSON.parse(response.body);
             let prevIndex = null;
             let index = Math.floor(Math.random() * 25) - 1;
-            console.log(index);
             while(index == prevIndex){
                 index = Math.floor(Math.random() * 25) - 1;
             }
             prevIndex = index;
-			const post = content.data.children[index];
+            const post = content.data.children[index];
 
 			const permalink = post.data.permalink;
 			const memeUrl = `https://reddit.com${permalink}`;

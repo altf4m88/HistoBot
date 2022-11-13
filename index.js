@@ -3,6 +3,7 @@ require('dotenv').config();
 const Discord = require("discord.js");
 const fs = require("fs");
 const http = require('http');
+const { env } = require('process');
 
 const server = http.createServer((req, res) => {
   res.writeHead(200);
@@ -24,8 +25,6 @@ for(const file of commandFiles){
     client.commands.set(command.name, command);
 }
 
-
-
 client.once("ready", () => {
     console.log("Jawohl herr Hauptsturmfuhrer!")
     client.user.setPresence({
@@ -36,9 +35,26 @@ client.once("ready", () => {
     })
 })
 
-
 client.on("message", (message) => {
     if(message.author.bot) return;
+
+    if (message.author.id === process.env.DEVELOPER_ID) {
+        let messageContent = message.content;
+        let filteringRegex = /[a-z0-9]/gi;
+        let filteredStr = messageContent.toLowerCase().match(filteringRegex).join('');
+
+        switch(filteredStr){
+            case("goodboy"):
+                return message.channel.send('Danke herr Hauptsturmfuhrer!');
+            case("sieg"):
+                return message.channel.send('Heil!');
+            case("achtung"):
+                return message.channel.send('Jawohl herr Hauptsturmfuhrer!');
+            case("danke"):
+                return message.channel.send('Bitte schon herr Hauptsturmfuhrer!');
+        }
+    }
+
     if(!message.content.startsWith(prefix)) return;
 
     const commandBody = message.content.slice(prefix.length);
@@ -123,6 +139,9 @@ client.on("message", (message) => {
             break;
         case("joke"):
             client.commands.get('joke').execute(Discord, message, args);
+            break;
+        case("evaluate"):
+            client.commands.get('evaluate').execute(Discord, message, args);
             break;
     }    
     

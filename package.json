@@ -16,6 +16,7 @@
     "dotenv": "^8.2.0",
     "got": "^11.8.1",
     "http": "0.0.1-security",
+    "mathjs": "^11.3.3",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "ms": "^2.1.2",

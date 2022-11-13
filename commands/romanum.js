@@ -4,7 +4,7 @@ module.exports = {
     usage:'|romanum <decimalnum>',
     example: '|romanum 69',
     execute(Discord, message, args){
-        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("I don't have permission to speak that");
+        // if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send("I don't have permission to speak that");
         if(parseInt(args[0]) == NaN) return message.channel.send("That's not a number");
         if(args.join(" ") == '') return message.channel.send("Give me number");
 
