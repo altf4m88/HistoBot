@@ -52,6 +52,16 @@ client.on("message", (message) => {
                 return message.channel.send('Jawohl herr Hauptsturmfuhrer!');
             case("danke"):
                 return message.channel.send('Bitte schon herr Hauptsturmfuhrer!');
+            case("hiphip"):
+                return message.channel.send('Hurra!');
+            case("zarodinu"):
+                return message.channel.send('URRAAA!');
+            case("feuerfrei"):
+                return message.channel.send('Panzerkanone feuer!');
+            case("ladpanzerammunition"):
+                return message.channel.send('Sprenggranate laden!');
+            case("takbir"):
+                return message.channel.send('Allahu akbar!');
         }
     }
 
