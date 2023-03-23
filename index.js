@@ -4,6 +4,7 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const http = require('http');
 const { env } = require('process');
+const msgPool = require('./data/text-pool');
 
 const server = http.createServer((req, res) => {
   res.writeHead(200);
@@ -35,15 +36,52 @@ client.once("ready", () => {
     })
 })
 
-client.on("message", (message) => {
+client.on("message", async (message) => {
     if(message.author.bot) return;
+    
+    const commandBody = message.content.slice(prefix.length);
+    const args = commandBody.split(" ");
+    const command = args.shift().toLowerCase();
 
     if (message.author.id === process.env.DEVELOPER_ID) {
         let messageContent = message.content;
         let filteringRegex = /[a-z0-9]/gi;
-        let filteredStr = messageContent.toLowerCase().match(filteringRegex).join('');
+        let filteredStr = messageContent.toLowerCase().match(filteringRegex).join('') ?? '';
 
         switch(filteredStr){
+            case ("bang"):
+            case ("ngab"):
+            case ("mang"):
+            case ("summonajudan"):
+
+                const filter = msg => msg.author.id == message.author.id;
+
+                message.channel.send(randMsg(msgPool.respondMessage));
+
+                message.channel.awaitMessages(filter, { max: 1, time: 30000, errors: ['time'] })
+                    .then(collected => {
+                        let content = collected.first().content.toLowerCase().match(filteringRegex).join('') ?? '';;
+                        
+                        switch(content){
+                            case ("jadwalsolat"):
+                            case ("yangbiasa"):
+                            case ("biasalah"):
+                            case ("bukajamberapa"):
+                            case ("imsakkapan"):
+                                message.reply(randMsg(msgPool.waitMessage))
+
+                                return client.commands.get('prayer-schedule').execute(Discord, message, args);
+                            case ("bukanlu"):
+                            case ("bukanluwh"):
+                            case ("luitugadiajak"):
+                            case ("gamanggillu"):
+                            case ("salahorang"):
+                            case ("gajadi"):
+                                message.reply(randMsg(msgPool.cancelMessage))
+                        }
+                    })
+                    .catch(collected => message.reply(randMsg(msgPool.timeoutMessage)));
+                return
             case("goodboy"):
                 return message.channel.send('Danke herr Hauptsturmfuhrer!');
             case("sieg"):
@@ -66,10 +104,6 @@ client.on("message", (message) => {
     }
 
     if(!message.content.startsWith(prefix)) return;
-
-    const commandBody = message.content.slice(prefix.length);
-    const args = commandBody.split(" ");
-    const command = args.shift().toLowerCase();
 
     switch(command){
         case("ping"):
@@ -153,11 +187,18 @@ client.on("message", (message) => {
         case("evaluate"):
             client.commands.get('evaluate').execute(Discord, message, args);
             break;
+        case("prayer-schedule"):
+            client.commands.get('prayer-schedule').execute(Discord, message, args);
+            break;
     }    
     
 })
 
-
+const randMsg = (arr) => {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    const item = arr[randomIndex];
+    return item;
+}
 
 
 client.login(process.env.BOT_TOKEN);
