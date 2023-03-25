@@ -4,7 +4,9 @@ const Discord = require("discord.js");
 const fs = require("fs");
 const http = require('http');
 const { env } = require('process');
+const { Configuration, OpenAIApi } = require("openai");
 const msgPool = require('./data/text-pool');
+
 
 const server = http.createServer((req, res) => {
   res.writeHead(200);
@@ -17,6 +19,10 @@ const prefix = "|";
 
 client.commands = new Discord.Collection();
 const commandFiles  = fs.readdirSync("./commands/").filter(file => file.endsWith(".js"));
+
+const aiConfiguration = new Configuration({
+    apiKey: process.env.OPEN_AI_TOKEN,
+});
 
 console.log(commandFiles);
 
@@ -100,6 +106,18 @@ client.on("message", async (message) => {
                 return message.channel.send('Sprenggranate laden!');
             case("takbir"):
                 return message.channel.send('Allahu akbar!');
+        }
+    }
+
+    //for openAI
+    if (message.channel.id === process.env.CHATBOT_CHANNEL_ID) {
+        try {
+            const openAiResponse = await ask(message.content);
+
+            return message.reply(openAiResponse);
+        } catch (error) {
+            console.log(error);
+            return message.reply('Yo ndak tau lah kok tanya saya');
         }
     }
 
@@ -200,5 +218,21 @@ const randMsg = (arr) => {
     return item;
 }
 
+const openai = new OpenAIApi(aiConfiguration);
+async function ask(prompt) {
+    const modifiedPrompt = prompt + "";
+
+    const response = await openai.createCompletion({
+        model: "text-davinci-003",
+        prompt : modifiedPrompt,
+        temperature: 0.2,
+        max_tokens: 512,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+    });
+
+    return response.data.choices[0].text;
+}
 
 client.login(process.env.BOT_TOKEN);
