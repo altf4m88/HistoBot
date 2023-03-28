@@ -222,17 +222,22 @@ const openai = new OpenAIApi(aiConfiguration);
 async function ask(prompt) {
     const modifiedPrompt = prompt + "";
 
-    const response = await openai.createCompletion({
-        model: "text-davinci-003",
-        prompt : modifiedPrompt,
+    const response = await openai.createChatCompletion({
+        // model: "text-davinci-003",
+        // prompt : modifiedPrompt,
+        model: "gpt-3.5-turbo",
+        messages: [
+            // { "role": "system", "content": "You are a funny and helpful assistant."},
+            { "role": "user", "content": modifiedPrompt }
+        ],
         temperature: 0.2,
         max_tokens: 512,
         top_p: 1,
-        frequency_penalty: 0,
+        frequency_penalty: 2,
         presence_penalty: 0,
     });
 
-    return response.data.choices[0].text;
+    return response.data.choices[0].message.content;
 }
 
 client.login(process.env.BOT_TOKEN);
