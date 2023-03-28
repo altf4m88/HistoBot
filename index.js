@@ -52,6 +52,9 @@ client.on("message", async (message) => {
     if (message.author.id === process.env.DEVELOPER_ID) {
         let messageContent = message.content;
         let filteringRegex = /[a-z0-9]/gi;
+        if (messageContent === null) {
+            return;
+        }
         let filteredStr = messageContent.toLowerCase().match(filteringRegex).join('') ?? '';
 
         switch(filteredStr){
@@ -118,6 +121,20 @@ client.on("message", async (message) => {
         } catch (error) {
             console.log(error);
             return message.reply('Yo ndak tau lah kok tanya saya');
+        }
+    }
+
+    //for openAI
+    if (message.channel.id === process.env.IMAGE_CHANNEL_ID) {
+        try {
+            const openAiResponse = await generate(message.content);
+
+            // let attachment = new Discord.MessageAttachment(openAiResponse);
+
+            return message.reply(openAiResponse);
+        } catch (error) {
+            console.log(error);
+            return message.reply('bensin abis');
         }
     }
 
@@ -240,4 +257,15 @@ async function ask(prompt) {
     return response.data.choices[0].message.content;
 }
 
+async function generate(prompt) {
+    const modifiedPrompt = prompt + "";
+
+    const response = await openai.createImage({
+        prompt: modifiedPrompt,
+        n: 1,
+        size: "256x256",
+      });
+    
+    return response.data.data[0].url;
+}
 client.login(process.env.BOT_TOKEN);
